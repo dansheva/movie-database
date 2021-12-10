@@ -1,6 +1,5 @@
 .container{
-    height: 40vh;
-    min-height: 200px;
+    height: 200px;
     background-color: #ececec;
     display: flex;
     align-items: center;

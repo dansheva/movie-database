@@ -2,7 +2,7 @@ import {Dispatch} from "redux";
 import {setErrorAC, setIsLoadingAC} from "../1-app-reducer/app-reducer";
 import {moviesApi} from "../../3-dal/movies-api";
 
-type MovieType = {
+export type MovieType = {
     Title: string
     Year: string
     imdbID: string

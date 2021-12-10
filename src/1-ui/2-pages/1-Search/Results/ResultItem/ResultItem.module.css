@@ -1,0 +1,33 @@
+.container{
+    display: flex;
+    background-color: #fff;
+    padding: 10px 20px;
+    border-bottom: #e5e5e5 solid 1px;
+    border-top: #e5e5e5 solid 1px;
+    color: #202020;
+}
+
+.container:hover{
+    background-color: #ececec;
+    transition: 0.2s;
+}
+
+.imageContainer{
+    height: 120px;
+    width: 80px;
+}
+.imageContainer img{
+    height: 100%;
+    width: 100%;
+}
+
+.title{
+    font-size: 20px;
+    padding: 0 10px;
+}
+
+.year, .type {
+    font-size: 16px;
+    padding: 5px 10px;
+    color: #7c7c7c;
+}
