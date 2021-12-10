@@ -24,7 +24,7 @@ export const SearchPage = () => {
             <Results/>
             {pageCount > 1
                 ? <div className={s.pagination}>
-                    <Pagination count={pageCount} color="primary" onChange={onChange}/>
+                    <Pagination page={searchState.page} count={pageCount} color="primary" onChange={onChange}/>
                 </div>
                 : null
             }

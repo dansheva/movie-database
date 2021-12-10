@@ -26,7 +26,10 @@ export const Header = () => {
                     </IconButton>
                 </Link>
             </Toolbar>
-            {state.app.isLoading && <LinearProgress/>}
+            <div>
+                {state.app.isLoading &&
+                    <LinearProgress style={{marginBottom: '-4px'}}/>}
+            </div>
         </AppBar>
     )
 }

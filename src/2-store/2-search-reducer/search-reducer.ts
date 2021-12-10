@@ -14,12 +14,14 @@ export type SearchReducerStateType = {
     Search: MovieType[]
     totalResults: string
     title: string
+    page: number
 }
 
 const initialState: SearchReducerStateType = {
     Search: [],
     totalResults: '0',
     title: '',
+    page: 1,
 }
 
 export const searchReducer = (state = initialState, action: SearchActionsTypes): SearchReducerStateType => {
@@ -30,12 +32,18 @@ export const searchReducer = (state = initialState, action: SearchActionsTypes):
             return {...state, totalResults: action.total}
         case "SET_TITLE":
             return {...state, title: action.title}
+        case "SET_PAGE":
+            return {...state, page: action.page}
         default:
             return state
     }
 }
 
-type SearchActionsTypes = SetSearchActionType | SetTotalResultsActionType | SetSearchingTitleActionType
+type SearchActionsTypes =
+    SetSearchActionType
+    | SetTotalResultsActionType
+    | SetSearchingTitleActionType
+    | SetPageActionType
 
 type SetSearchActionType = ReturnType<typeof setSearchAC>
 const setSearchAC = (search: MovieType[]) => ({
@@ -58,8 +66,16 @@ export const setSearchingTitleAC = (title: string) => ({
     } as const
 )
 
+type SetPageActionType = ReturnType<typeof setPageAC>
+export const setPageAC = (page: number) => ({
+        type: 'SET_PAGE',
+        page
+    } as const
+)
+
 
 export const setSearchedMovies = (searchTitle: string, page: string) => (dispatch: Dispatch) => {
+    dispatch(setPageAC(+page))
     dispatch(setSearchingTitleAC(searchTitle))
     dispatch(setIsLoadingAC(true))
     moviesApi.search(searchTitle, page)
