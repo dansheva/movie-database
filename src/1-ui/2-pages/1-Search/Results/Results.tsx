@@ -8,7 +8,7 @@ export const Results = () => {
 
     const searchState = useSelector<AppRootStateType, SearchReducerStateType>(state => state.search)
 
-    const items = searchState.Search.map(item => <ResultItem item={item}/>)
+    const items = searchState.Search.map(item => <ResultItem key={item.imdbID} item={item}/>)
 
     return (
         <div>
