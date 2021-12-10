@@ -29,7 +29,7 @@ export const setIsLoadingAC = (isLoading: boolean) => ({
 )
 
 type SetErrorActionType = ReturnType<typeof setErrorAC>
-export const setErrorAC = (err: string) => ({
+export const setErrorAC = (err: string | null) => ({
         type: 'SET_ERROR',
         err
     } as const

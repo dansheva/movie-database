@@ -3,6 +3,8 @@ import TextField from "@mui/material/TextField";
 import React from "react";
 import s from './Search.module.css'
 import {useFormik} from "formik";
+import {useDispatch} from "react-redux";
+import {setSearchedMovies} from "../../../2-store/2-search-reducer/search-reducer";
 
 type FormikErrorType = {
     search?: string
@@ -10,6 +12,8 @@ type FormikErrorType = {
 
 
 export const Search = () => {
+
+    const dispatch = useDispatch()
 
     const formik = useFormik({
         initialValues: {
@@ -23,7 +27,7 @@ export const Search = () => {
             return errors;
         },
         onSubmit: values => {
-            console.log(JSON.stringify(values));
+            dispatch(setSearchedMovies(values.search, '1'))
         },
     })
 

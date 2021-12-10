@@ -6,8 +6,14 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import LinearProgress from "@mui/material/LinearProgress";
 import AppBar from "@mui/material/AppBar";
 import s from './Header.module.css'
+import {useSelector} from "react-redux";
+import {AppRootStateType} from "../../../2-store/store";
 
 export const Header = () => {
+
+    const state = useSelector<AppRootStateType, AppRootStateType>(state => state)
+
+
     return(
         <AppBar position="static">
             <Toolbar>
@@ -20,7 +26,7 @@ export const Header = () => {
                     </IconButton>
                 </Link>
             </Toolbar>
-            {/*{'loading' === 'loading' && <LinearProgress/>}*/}
+            {state.app.isLoading && <LinearProgress/>}
         </AppBar>
     )
 }
