@@ -1,15 +1,15 @@
 import React from "react";
-import {MovieType} from "../../../../../2-store/2-search-reducer/search-reducer";
+import {SearchMovieType} from "../../../../../2-store/2-search-reducer/search-reducer";
 import s from './ResultItem.module.css'
 import {Link} from "react-router-dom";
 
 type PropsType = {
-    item: MovieType
+    item: SearchMovieType
 }
 
 export const ResultItem = React.memo( ({item}: PropsType) => {
     return(
-        <Link to={`details/${item.imdbID}`}>
+        <Link to={`../details/${item.imdbID}`}>
             <div className={s.container}>
                 <div className={s.imageContainer}>
                     <img src={item.Poster} alt="Poster"/>

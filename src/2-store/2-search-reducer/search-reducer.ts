@@ -2,7 +2,7 @@ import {Dispatch} from "redux";
 import {setErrorAC, setIsLoadingAC} from "../1-app-reducer/app-reducer";
 import {moviesApi} from "../../3-dal/movies-api";
 
-export type MovieType = {
+export type SearchMovieType = {
     Title: string
     Year: string
     imdbID: string
@@ -11,7 +11,7 @@ export type MovieType = {
 }
 
 export type SearchReducerStateType = {
-    Search: MovieType[]
+    Search: SearchMovieType[]
     totalResults: string
     title: string
     page: number
@@ -46,7 +46,7 @@ type SearchActionsTypes =
     | SetPageActionType
 
 type SetSearchActionType = ReturnType<typeof setSearchAC>
-const setSearchAC = (search: MovieType[]) => ({
+const setSearchAC = (search: SearchMovieType[]) => ({
         type: 'SET_SEARCH',
         search
     } as const

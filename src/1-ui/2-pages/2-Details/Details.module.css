@@ -12,6 +12,16 @@
     padding-bottom: 20px;
 }
 
+.title{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.like {
+    margin-top: -10px;
+}
+
 .posterContainer img{
     width: 100%;
 }

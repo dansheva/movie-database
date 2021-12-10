@@ -19,7 +19,7 @@ export const appReducer = (state = initialState, action: AppActionsTypes): AppRe
     }
 }
 
-type AppActionsTypes = SetIsLoadingActionType | SetErrorActionType
+export type AppActionsTypes = SetIsLoadingActionType | SetErrorActionType
 
 type SetIsLoadingActionType = ReturnType<typeof setIsLoadingAC>
 export const setIsLoadingAC = (isLoading: boolean) => ({
