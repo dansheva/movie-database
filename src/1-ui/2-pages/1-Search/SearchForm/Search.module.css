@@ -1,15 +1,17 @@
 .container{
     height: 200px;
-    background-color: #ececec;
     display: flex;
     align-items: center;
+    /*background-image: url("../../../../assets/img/522-min-min.jpg");*/
+    background-position: center;
+    background-size: contain;
     justify-content: center;
 }
 
 .searchForm{
     padding: 20px;
-    background-color: #fff;
     box-shadow: #cbcbcb 0 0 20px;
+    background-color: #ffffff;
     display: flex;
     gap: 10px;
 }

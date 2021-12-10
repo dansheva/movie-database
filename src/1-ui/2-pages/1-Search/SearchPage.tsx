@@ -16,6 +16,14 @@ export const SearchPage = () => {
 
     const onChange = (event: React.ChangeEvent<unknown>, value: number) => {
         dispatch(setSearchedMovies(searchState.title, value.toString()))
+        const scrollTop = () => {
+            window.scrollTo({
+                top: 0,
+                left: 0,
+                behavior: 'smooth'
+            });
+        };
+        scrollTop()
     }
 
     return (
