@@ -1,4 +1,4 @@
-type AppReducerStateType = {
+export type AppReducerStateType = {
     errors: string | null,
     isLoading: boolean
 }

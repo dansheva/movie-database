@@ -3,8 +3,10 @@ import TextField from "@mui/material/TextField";
 import React from "react";
 import s from './Search.module.css'
 import {useFormik} from "formik";
-import {useDispatch} from "react-redux";
-import {setSearchedMovies} from "../../../2-store/2-search-reducer/search-reducer";
+import {useDispatch, useSelector} from "react-redux";
+import {setSearchedMovies} from "../../../../2-store/2-search-reducer/search-reducer";
+import {AppRootStateType} from "../../../../2-store/store";
+import {AppReducerStateType} from "../../../../2-store/1-app-reducer/app-reducer";
 
 type FormikErrorType = {
     search?: string
@@ -14,6 +16,8 @@ type FormikErrorType = {
 export const Search = () => {
 
     const dispatch = useDispatch()
+
+    const appState = useSelector<AppRootStateType, AppReducerStateType>(state => state.app)
 
     const formik = useFormik({
         initialValues: {
@@ -43,9 +47,11 @@ export const Search = () => {
                                onChange={formik.handleChange}
                                value={formik.values.search}
                                error={formik.touched.search && Boolean(formik.errors.search)}
+                               disabled={appState.isLoading}
                     />
                     <Button variant="contained"
-                            type={'submit'}>Search
+                            type={'submit'}
+                            disabled={appState.isLoading}>Search
                     </Button>
                 </div>
             </form>

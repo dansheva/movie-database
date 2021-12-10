@@ -10,14 +10,16 @@ type MovieType = {
     Poster: string
 }
 
-type SearchReducerStateType = {
+export type SearchReducerStateType = {
     Search: MovieType[]
     totalResults: string
+    title: string
 }
 
 const initialState: SearchReducerStateType = {
     Search: [],
     totalResults: '0',
+    title: '',
 }
 
 export const searchReducer = (state = initialState, action: SearchActionsTypes): SearchReducerStateType => {
@@ -26,13 +28,14 @@ export const searchReducer = (state = initialState, action: SearchActionsTypes):
             return {...state, Search: action.search}
         case "SET_TOTAL_RESULTS":
             return {...state, totalResults: action.total}
+        case "SET_TITLE":
+            return {...state, title: action.title}
         default:
             return state
     }
 }
 
-type SearchActionsTypes = SetSearchActionType | SetTotalResultsActionType
-
+type SearchActionsTypes = SetSearchActionType | SetTotalResultsActionType | SetSearchingTitleActionType
 
 type SetSearchActionType = ReturnType<typeof setSearchAC>
 const setSearchAC = (search: MovieType[]) => ({
@@ -48,12 +51,22 @@ const setTotalResultsAC = (total: string) => ({
     } as const
 )
 
+type SetSearchingTitleActionType = ReturnType<typeof setSearchingTitleAC>
+export const setSearchingTitleAC = (title: string) => ({
+        type: 'SET_TITLE',
+        title
+    } as const
+)
+
 
 export const setSearchedMovies = (searchTitle: string, page: string) => (dispatch: Dispatch) => {
-    dispatch(setErrorAC(null))
+    dispatch(setSearchingTitleAC(searchTitle))
     dispatch(setIsLoadingAC(true))
     moviesApi.search(searchTitle, page)
         .then(res => {
+            dispatch(setErrorAC(null))
+            dispatch(setSearchAC([]))
+            dispatch(setTotalResultsAC('0'))
             if (res.data.Response === 'True') {
                 if (res.data.Search && res.data.totalResults) {
                     dispatch(setSearchAC(res.data.Search))
@@ -66,6 +79,9 @@ export const setSearchedMovies = (searchTitle: string, page: string) => (dispatc
             }
         })
         .catch(err => {
+            dispatch(setErrorAC(null))
+            dispatch(setSearchAC([]))
+            dispatch(setTotalResultsAC('0'))
             dispatch(setErrorAC(err.toString()))
             dispatch(setIsLoadingAC(false))
         })
