@@ -24,16 +24,12 @@ export const Details = () => {
     const dispatch = useDispatch()
     const movie = detailsState.movie
 
-    console.log(detailsState)
-
-
     useEffect(() => {
         dispatch(setMovieDetails(params.movieId ? params.movieId : ''))
         return () => {
             dispatch(setMovieAC(null))
         }
-    }, [])
-
+    }, [dispatch, params.movieId])
 
     if (appState.errors === 'Incorrect IMDb ID.') {
         navigate('/404')

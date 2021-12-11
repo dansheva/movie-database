@@ -5,17 +5,11 @@ import {Details} from "./1-ui/2-pages/2-Details/Details";
 import {Favorites} from "./1-ui/2-pages/3-Favorites/Favorites";
 import {NotFound} from "./1-ui/2-pages/4-NotFound/NotFound";
 import {Header} from "./1-ui/1-common-components/Header/Header";
-import {AppRootStateType} from "./2-store/store";
-import {useSelector} from "react-redux";
 import {ErrorSnackbar} from "./1-ui/1-common-components/ErrorSnackbar/ErrorSnackbar";
 import {SearchPage} from "./1-ui/2-pages/1-Search/SearchPage";
 
 
 function App() {
-
-    const state = useSelector<AppRootStateType, AppRootStateType>(state => state)
-
-    console.log(state.search.Search)
 
     return (
         <div className="App">

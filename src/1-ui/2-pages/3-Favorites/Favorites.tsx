@@ -20,13 +20,13 @@ export const Favorites = () => {
         return () => {
             dispatch(setFavoritesAC([]))
         }
-    }, [])
+    }, [dispatch])
 
     const items = favoritesState.movies.map(item => <ResultItem key={item.imdbID} item={item}/>)
 
-    return(
+    return (
         <div>
-            <div style={{padding:'20px'}}>
+            <div style={{padding: '20px'}}>
                 <h2>Favorites</h2>
             </div>
             {favoritesState.movies.length === 0

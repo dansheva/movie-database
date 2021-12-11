@@ -7,7 +7,6 @@ import {useDispatch, useSelector} from "react-redux";
 import {setSearchedMovies} from "../../../../2-store/2-search-reducer/search-reducer";
 import {AppRootStateType} from "../../../../2-store/store";
 import {AppReducerStateType} from "../../../../2-store/1-app-reducer/app-reducer";
-import background from '../../../../assets/img/522-min-min.jpg'
 
 type FormikErrorType = {
     search?: string
