@@ -46,14 +46,14 @@ type SearchActionsTypes =
     | SetPageActionType
 
 type SetSearchActionType = ReturnType<typeof setSearchAC>
-const setSearchAC = (search: SearchMovieType[]) => ({
+export const setSearchAC = (search: SearchMovieType[]) => ({
         type: 'SET_SEARCH',
         search
     } as const
 )
 
 type SetTotalResultsActionType = ReturnType<typeof setTotalResultsAC>
-const setTotalResultsAC = (total: string) => ({
+export const setTotalResultsAC = (total: string) => ({
         type: 'SET_TOTAL_RESULTS',
         total
     } as const
